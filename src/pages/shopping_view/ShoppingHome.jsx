@@ -16,7 +16,7 @@ import ShoppingProductDetails from "../../components/shopping_view/ShoppingProdu
 import {
   addToCartAction,
   getItemsToCartAction,
-} from "../../store/actions/CartAction";
+} from "../../store/actions/cartAction";
 import { toast } from "react-toastify";
 
 const ShoppingHome = () => {
