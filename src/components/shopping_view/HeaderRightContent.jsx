@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { FaShoppingCart } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import UserCartWrapper from "./UserCartWrapper";
-import { getItemsToCartAction } from "../../store/actions/CartAction";
+import { getItemsToCartAction } from "../../store/actions/cartAction";
 
 const HeaderRightContent = () => {
   const { user } = useSelector((state) => state.auth);
