@@ -11,7 +11,7 @@ import {
 import { useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import ShoppingProductDetails from "../../components/shopping_view/ShoppingProductDetails";
-import { addToCartAction, getItemsToCartAction } from "../../store/actions/CartAction";
+import { addToCartAction, getItemsToCartAction } from "../../store/actions/cartAction";
 
 // this is for our search parameter url be cahnge'
 const createSearchParamsHelper = (filterParams) => {
