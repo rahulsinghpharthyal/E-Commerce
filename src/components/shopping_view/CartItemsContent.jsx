@@ -2,7 +2,7 @@ import React from 'react'
 import { FaMinus, FaPlus } from 'react-icons/fa'
 import { MdDelete } from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteToCartAction, getItemsToCartAction, updateToCartAction } from '../../store/actions/CartAction'
+import { deleteToCartAction, getItemsToCartAction, updateToCartAction } from '../../store/actions/cartAction'
 import { toast } from 'react-toastify'
 
 const CartItemsContent = ({cartItem}) => {
