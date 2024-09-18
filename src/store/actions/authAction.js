@@ -15,7 +15,7 @@ const registerAction = createAsyncThunk("/auth/register", async (formData) => {
 
 // for login action
 
-const loginAction = createAsyncThunk("auth/login", async (formData) => {
+const loginAction = createAsyncThunk("/auth/login", async (formData) => {
   try {
     const { data } = await axiosPrivate.post("/api/auth/login", formData, {
       withCredentials: true,
@@ -42,10 +42,9 @@ const logoutAction = createAsyncThunk("auth/logout", async () => {
 
 const checkAuthAction = createAsyncThunk("/auth/checkauth", async () => {
   try {
-    const {data} = await axiosPrivate.get("/api/auth/check-auth", {
+    const { data } = await axiosPrivate.get("/api/auth/check-auth", {
       headers: {
-        "Cache-Control" :
-          "no-store, no-cache, must-revalidate, proxy-revalidate",
+        "Content-Type": "application/json"
       },
       withCredentials: true,
     });
