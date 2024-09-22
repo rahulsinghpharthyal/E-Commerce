@@ -22,6 +22,10 @@ import { useEffect } from "react";
 import { checkAuthAction } from "./store/actions/authAction";
 import { PageLoader } from "./components/common/Loading";
 import PaypalReturn from "./pages/shopping_view/PaypalReturn";
+import SendLink from "./pages/auth/SendLink";
+import PasswordRecover from "./pages/auth/PasswordRecover";
+import TrackRoutes from "./pages/admin_view/TrackRoutes";
+import PaypalSuccess from "./pages/shopping_view/PaypalSuccess";
 
 function App() {
   const { isAuthenticated, user, isLoading } = useSelector((state) => state.auth);
@@ -38,6 +42,15 @@ function App() {
   return (
     <div className="flex flex-col overflow-hidden bg-white">
       <Routes>
+      {/* <Route
+          path="/"
+          element={
+            <Check_Auth
+              isAuthenticated={isAuthenticated}
+              user={user}
+            ></Check_Auth>
+          }
+        /> */}
         <Route
           path="/"
           element={
@@ -48,6 +61,8 @@ function App() {
         >
           <Route path="auth/login" element={<AuthLogin />} />
           <Route path="auth/register" element={<AuthRegister />} />
+          <Route path="auth/get-recovery-link" element={<SendLink/>} />
+          <Route path="auth/reset-password/:id" element={<PasswordRecover />} />
         </Route>
 
         <Route
@@ -62,6 +77,7 @@ function App() {
           <Route path="features" element={<AdminFeatures />} />
           <Route path="orders" element={<AdminOrders />} />
           <Route path="products" element={<AdminProducts />} />
+          <Route path="track-performance" element={<TrackRoutes />} />
         </Route>
 
         <Route
@@ -76,8 +92,8 @@ function App() {
           <Route path="listing" element={<ShoppingListing />} />
           <Route path="checkout" element={<ShoppingCheckout />} />
           <Route path="account" element={<ShoppingAccount />} />
-          <Route path="paypal-return" element={<PaypalReturn />} />
-
+          <Route path="/shop/paypal-return" element={<PaypalReturn />} />
+          <Route path="/shop/payment-success" element={<PaypalSuccess />} />
         </Route>
 
         <Route path="*" element={<PageNotFound />} />

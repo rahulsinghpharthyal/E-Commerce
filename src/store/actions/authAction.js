@@ -26,6 +26,20 @@ const loginAction = createAsyncThunk("/auth/login", async (formData) => {
   }
 });
 
+//googelloginAction
+
+export const googleLoginAction = createAsyncThunk('/auth/googlelogin', async(token) =>{
+  try{
+    const {data} = await axiosPrivate.post('/api/auth/google', token, {
+      withCredentials: true,
+    })
+    console.log(data)
+    return data;
+  }catch(err){
+    return err.message
+  }
+} )
+
 // for logout aciton
 const logoutAction = createAsyncThunk("auth/logout", async () => {
   try {

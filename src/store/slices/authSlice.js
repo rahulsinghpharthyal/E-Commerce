@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit'
-import { checkAuthAction, loginAction, logoutAction, registerAction } from '../actions/authAction';
+import { checkAuthAction, googleLoginAction, loginAction, logoutAction, registerAction } from '../actions/authAction';
 
 const initialState = {
     isAuthenticated: false,
@@ -40,6 +40,21 @@ const authSlice = createSlice({
             state.isAuthenticated = action.payload.success ? action.payload.success : false;
         })
         .addCase(loginAction.rejected, (state, action)=> {
+            state.isLoading = false;
+            state.user = null;
+            state.isAuthenticated = false;
+            state.error = action.payload
+        })
+        .addCase(googleLoginAction.pending, (state) => {
+            state.isLoading = true;
+        })
+        .addCase(googleLoginAction.fulfilled, (state, action)=> {
+            console.log('this is action', action.payload)
+            state.isLoading = false;
+            state.user = action.payload.success ? action.payload.Data : null;
+            state.isAuthenticated = action.payload.success ? action.payload.success : false;
+        })
+        .addCase(googleLoginAction.rejected, (state, action)=> {
             state.isLoading = false;
             state.user = null;
             state.isAuthenticated = false;

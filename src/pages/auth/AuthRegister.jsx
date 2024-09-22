@@ -114,7 +114,7 @@ const AuthRegister = () => {
 
         <button
           type="submit"
-          className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring focus:ring-blue-300"
+          className="w-full py-2 px-4 bg-slate-900 text-white rounded-lg hover:bg-slate-950 focus:ring focus:ring-blue-300"
         >
           Sign Up
         </button>

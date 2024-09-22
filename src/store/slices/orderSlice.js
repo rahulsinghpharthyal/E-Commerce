@@ -19,6 +19,7 @@ const shoppingOrderSlice = createSlice({
             state.isLoading = true;
         })
         .addCase(createNewOrderAction.fulfilled, (state, action)=>{
+            console.log('this is action from order', action);
             state.isLoading = false;
             state.approvalUrl = action.payload.approvalURL,
             state.orderId = action.payload.orderId;

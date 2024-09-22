@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import img from "../../assets/account.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import CartItemsContent from "../../components/shopping_view/CartItemsContent";
@@ -9,9 +9,9 @@ import { toast } from "react-toastify";
 const ShoppingCheckout = () => {
   const { cartItems } = useSelector((state) => state.shopcart);
   const { user } = useSelector((state) => state.auth);
-  const { approvalUrl } = useSelector((state) => state.shoppingOrderSlice);
+  const { approvalUrl, orderId } = useSelector((state) => state.shoppingOrderSlice);
   const [currentSelectedAddress, setCurrentSelectedAddress] = useState(null);
-  const [isPaymentStart, setIsPaymemntStart] = useState(false);
+  const [isPaymentStart, setIsPaymentStart] = useState(false);
 
   const dispatch = useDispatch();
   const totalCartAmount =
@@ -26,17 +26,15 @@ const ShoppingCheckout = () => {
           0
         )
       : 0;
-  console.log(cartItems);
 
   const handleInitiatePaypalPayment = async () => {
-    if(!currentSelectedAddress){
-      toast.warn('Please Select One Address')
+    if (!currentSelectedAddress) {
+      toast.warn("Please Select One Address");
     }
     const orderData = {
       userId: user._id,
       cartId: cartItems?._id,
-      cartItems: 
-        cartItems?.items?.map((item) => ({
+      cartItems: cartItems?.items?.map((item) => ({
         productId: item.productId,
         title: item.title,
         image: item.image,
@@ -56,26 +54,28 @@ const ShoppingCheckout = () => {
       orderDate: new Date(),
       orderUpdateDate: new Date(),
       paymentId: "",
-      payedId: "",
+      payerId: "",
     };
     console.log(orderData);
-    try{
-      const {payload} = await dispatch(createNewOrderAction(orderData));
-      console.log('paylaod', payload);
-      if(payload.success){
-        setIsPaymemntStart(!isPaymentStart)
-      }else{
-        setIsPaymemntStart(false);
+    try {
+      const { payload } = await dispatch(createNewOrderAction(orderData));
+      console.log("paylaod", payload);
+      if (payload.success) {
+        setIsPaymentStart(!isPaymentStart);
+      } else {
+        setIsPaymentStart(false);
       }
-    }catch(err){
+    } catch (err) {
       console.log(err);
     }
-
   };
-console.log('tis is approval url');
-  if(approvalUrl){
-    window.location.href = approvalUrl
-  }
+
+  console.log("tis is orderId url", orderId);
+  useEffect(() => {
+    if (approvalUrl) {
+      window.location.href = approvalUrl;
+    }
+  }, [approvalUrl]);
   return (
     <div className="flex flex-col">
       <div className="relative h-[300px] w-full overflow-hidden">

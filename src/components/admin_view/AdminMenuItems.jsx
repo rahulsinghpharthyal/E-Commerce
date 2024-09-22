@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { LuLayoutDashboard } from "react-icons/lu";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
+import { GiDeerTrack } from "react-icons/gi";
 import { FcShipped } from "react-icons/fc";
 
 const adminSidebarMenuItems = [
@@ -22,6 +23,12 @@ const adminSidebarMenuItems = [
       label: "Orders",
       path: "/admin/orders",
       icon: <FcShipped />,
+    },
+    {
+      id: "traking",
+      label: "Track Performance",
+      path: "/admin/track-performance",
+      icon: <GiDeerTrack />,
     },
   ];
 const AdminMenuItems = ({setOpen}) => {
