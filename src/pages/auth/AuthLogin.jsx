@@ -64,7 +64,6 @@ const AuthLogin = () => {
     console.log(error);
   };
   const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
-  
   return (
     <GoogleOAuthProvider clientId={clientId}>
       <div className="mx-auto w-full max-w-md h-[32rem] p-8 space-y-6 shadow-sm rounded-md">
