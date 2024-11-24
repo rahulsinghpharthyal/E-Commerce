@@ -63,8 +63,10 @@ const AuthLogin = () => {
     toast.error("Google Login failed.");
     console.log(error);
   };
+  const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+  
   return (
-    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
+    <GoogleOAuthProvider clientId={clientId}>
       <div className="mx-auto w-full max-w-md h-[32rem] p-8 space-y-6 shadow-sm rounded-md">
         <div className="text-center">
           <h1 className="text-3xl font-extrabold text-gray-900">

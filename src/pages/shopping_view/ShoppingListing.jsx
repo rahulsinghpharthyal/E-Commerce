@@ -39,9 +39,8 @@ const ShoppingListing = () => {
   const { productList, productDetials } = useSelector((state) => state.shopProducts);
   const { user } = useSelector((state)=> state.auth);
 
-  console.log('this is user', user);
-
   const categorySearchParam = searchParams.get('category')
+
   const handleFilter = (getSectionId, getCurrentOption) => {
     console.log(getSectionId, getCurrentOption);
     let copyFilters = { ...filter };

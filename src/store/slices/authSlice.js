@@ -12,6 +12,7 @@ const authSlice = createSlice({
     initialState,
     reducers:{
         setUser: (state, action)=> {
+        
         }
     },
     extraReducers: (builder)=>{
@@ -73,10 +74,10 @@ const authSlice = createSlice({
         })
         .addCase(checkAuthAction.rejected, (state, action)=> {
             state.isLoading = false;
-        })
+        })  
 
         // for logout user
-        .addCase(logoutAction.fulfilled, (state, action)=> {
+        .addCase(logoutAction.fulfilled, (state)=> {
             state.isLoading = false;
             state.user = null;
             state.isAuthenticated = false;
